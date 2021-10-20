@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
@@ -16,8 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @AllArgsConstructor
+@RequestMapping("/session")
 public class SessionController {
-    private final static int duration = 60 * 60 * 24;
+    private final static int duration = 60 * 60 * 24 * 365;
 
     private final static String JWT_COOKIE_NAME = "naksam";
 
@@ -25,7 +27,7 @@ public class SessionController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginForm loginForm, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
-        String jwt = sessionService.login(loginForm, duration);
+        String jwt = sessionService.login(loginForm);
 
         if (jwt == null || jwt.isEmpty()) {
             throw new RuntimeException("로그인 실패");
@@ -35,7 +37,6 @@ public class SessionController {
 
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
-
 
     private Cookie createCookie(String jwt, HttpServletRequest httpServletRequest) {
         return CookieFactory.createCookie(conf -> conf
