@@ -1,6 +1,5 @@
 package com.naksam.userserver.data;
 
-import com.naksam.userserver.domain.UserDomain;
 import com.naksam.userserver.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

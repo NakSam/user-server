@@ -1,6 +1,7 @@
 package com.naksam.userserver.domain.entity;
 
 import com.naksam.userserver.dto.MemberPayload;
+import com.naksam.userserver.dto.UserDetailResponse;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -41,5 +42,9 @@ public class User {
 
     public MemberPayload createMemberPayload() {
         return new MemberPayload(id, email ,name);
+    }
+
+    public UserDetailResponse createUserDetail() {
+        return new UserDetailResponse(email, name);
     }
 }

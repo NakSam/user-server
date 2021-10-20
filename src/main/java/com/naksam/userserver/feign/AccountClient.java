@@ -11,4 +11,7 @@ public interface AccountClient {
 
     @PostMapping(value = "/create")
     JsonWebToken createToken(@RequestBody MemberPayload memberPayload);
+
+    @PostMapping(value = "/info")
+    MemberPayload findInfo(@RequestBody JsonWebToken jsonWebToken);
 }

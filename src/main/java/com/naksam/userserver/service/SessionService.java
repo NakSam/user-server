@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class SessionService {
     private final UserDomain userDomain;
 
-    public String login(LoginForm loginForm, int duration) {
-        return userDomain.login(loginForm, duration);
+    public String login(LoginForm loginForm) {
+        return userDomain.login(loginForm);
     }
 }
