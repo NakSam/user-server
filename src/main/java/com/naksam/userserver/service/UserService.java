@@ -19,8 +19,11 @@ public class UserService {
     private static final String COOKIE_NAME = "naksam";
 
     public UserDetailResponse findDetail(HttpServletRequest req) {
-        MemberPayload memberPayload = getMemberPayload(req);
-        return userDomain.findDetail(memberPayload.getId())
+//        MemberPayload memberPayload = getMemberPayload(req);
+//        return userDomain.findDetail(memberPayload.getId())
+//                .createUserDetail();
+
+        return userDomain.findDetail(1L)
                 .createUserDetail();
     }
 
