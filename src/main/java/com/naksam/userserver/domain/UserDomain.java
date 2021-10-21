@@ -17,6 +17,7 @@ public class UserDomain {
     private final AccountRetryClient accountRetryClient;
 
     public String login(LoginForm loginForm) {
+        System.out.println(loginForm);
         User user = userRepository.findByEmail(loginForm.getEmail())
                 .orElseThrow(() -> new RuntimeException("가입된 회원이 없습니다"));
 
