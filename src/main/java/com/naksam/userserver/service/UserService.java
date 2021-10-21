@@ -29,6 +29,8 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("쿠키가 없습니다"))
                 .getValue();
 
+        System.out.println(token);
+
         return accountRetryClient.findInfo(new JsonWebToken(token));
     }
 }
