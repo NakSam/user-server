@@ -31,4 +31,9 @@ public class UserDomain {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("가입된 회원이 없습니다"));
     }
+
+    public User findByEmail(String email){
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("가입된 회원이 없습니다"));
+    }
 }

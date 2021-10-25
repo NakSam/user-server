@@ -27,6 +27,10 @@ public class UserService {
                 .createUserDetail();
     }
 
+    public UserDetailResponse findByEmail(String email){
+        return userDomain.findByEmail(email).createUserDetail();
+    }
+
     private MemberPayload getMemberPayload(HttpServletRequest req) {
         String token = HttpSupport.getCookie(req, COOKIE_NAME)
                 .orElseThrow(() -> new RuntimeException("쿠키가 없습니다"))
