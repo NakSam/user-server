@@ -2,6 +2,7 @@ package com.naksam.userserver.presentation;
 
 import com.naksam.userserver.common.CookieFactory;
 import com.naksam.userserver.dto.LoginForm;
+import com.naksam.userserver.dto.UserInfo;
 import com.naksam.userserver.service.SessionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,15 +26,16 @@ public class SessionController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginForm loginForm, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
-        String jwt = sessionService.login(loginForm);
+        UserInfo userInfo = sessionService.login(loginForm);
 
-        if (jwt == null || jwt.isEmpty()) {
+        if (userInfo.getJwt() == null || userInfo.getJwt()
+                .isEmpty()) {
             throw new RuntimeException("로그인 실패");
         }
 
-        httpServletResponse.addCookie(createCookie(jwt, httpServletRequest));
+        httpServletResponse.addCookie(createCookie(userInfo.getJwt(), httpServletRequest));
 
-        return ResponseEntity.ok(HttpStatus.ACCEPTED);
+        return ResponseEntity.ok(userInfo.getUserId());
     }
 
     private Cookie createCookie(String jwt, HttpServletRequest httpServletRequest) {

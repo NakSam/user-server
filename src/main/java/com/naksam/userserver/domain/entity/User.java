@@ -47,4 +47,8 @@ public class User {
     public UserDetailResponse createUserDetail() {
         return new UserDetailResponse(id, email, name);
     }
+
+    public Long id() {
+        return id;
+    }
 }
