@@ -45,6 +45,6 @@ public class User {
     }
 
     public UserDetailResponse createUserDetail() {
-        return new UserDetailResponse(email, name);
+        return new UserDetailResponse(id, email, name);
     }
 }
