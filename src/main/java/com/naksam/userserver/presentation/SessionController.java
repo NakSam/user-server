@@ -42,7 +42,7 @@ public class SessionController {
                 .name(JWT_COOKIE_NAME)
                 .value(jwt)
                 .expires(duration)
-                .secure("https".equals(httpServletRequest.getScheme()))
+//                .secure("https".equals(httpServletRequest.getScheme()))
         );
     }
 }

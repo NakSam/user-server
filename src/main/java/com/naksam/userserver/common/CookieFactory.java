@@ -61,7 +61,7 @@ public class CookieFactory {
             Cookie cookie = new Cookie(name, value);
             cookie.setMaxAge(expires);
             cookie.setSecure(secure);
-            cookie.setHttpOnly(true);
+            cookie.setHttpOnly(false);
             cookie.setPath("/");
             return cookie;
         }
