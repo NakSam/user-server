@@ -5,7 +5,6 @@ import com.naksam.userserver.dto.LoginForm;
 import com.naksam.userserver.dto.UserInfo;
 import com.naksam.userserver.service.SessionService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +34,7 @@ public class SessionController {
 
         httpServletResponse.addCookie(createCookie(userInfo.getJwt(), httpServletRequest));
 
-        return ResponseEntity.ok(userInfo.getUserId());
+        return ResponseEntity.ok(userInfo);
     }
 
     private Cookie createCookie(String jwt, HttpServletRequest httpServletRequest) {
