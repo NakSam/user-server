@@ -19,7 +19,7 @@ public class CORSConfig extends GenericFilterBean implements Filter {
         httpResponse.setHeader("Access-Control-Allow-Headers", "*");
 //      httpResponse.setHeader("Access-Control-Allow-Headers",
 //      "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, X-Csrf-Token, Authorization");
-        httpResponse.setHeader("Access-Control-Allow-Credentials", "false");
+        httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
         httpResponse.setHeader("Access-Control-Max-Age", "3600");
 //        System.out.println("********** CORS Configuration Completed **********");
         chain.doFilter(request, response);
