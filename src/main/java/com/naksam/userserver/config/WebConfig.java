@@ -10,9 +10,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/cookie")
+        registry.addMapping("/*")
                 .allowedOrigins("*")
-                .allowedMethods("POST", "OPTIONS","GET", "PUT", "DELETE")
-                .allowCredentials(true).maxAge(500);
+                .allowedMethods("POST", "OPTIONS", "GET", "PUT", "DELETE")
+                .allowCredentials(true);
     }
 }
